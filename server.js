@@ -42,6 +42,10 @@ app.get("/error",(request,response) =>{
   response.send({error:"Unable to send a response!!"});
 });
 
+app.get("/projects",(request, response) => {
+  response.render("projects.hbs", {message: "Portfolio page here..!!"});
+});
+
 app.listen(port,()=>{
   console.log(`Server is on port ${port}`);
 });
