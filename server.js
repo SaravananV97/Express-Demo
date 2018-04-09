@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const app = express();
 const fs = require('fs');
+const port = process.env.PORT || 3000;
 
 hbs.registerPartials(__dirname + "/views/partials");
 hbs.registerHelper("getYear",() => {
@@ -17,7 +18,6 @@ hbs.registerHelper("currentTime",() => {
 });
 // app.use((request,response,next) => {
 //   response.render("maintain.hbs");
-//   next();
 // });
 app.set("view engine","hbs");
 app.use(express.static(__dirname + "/public"));
@@ -42,6 +42,6 @@ app.get("/error",(request,response) =>{
   response.send({error:"Unable to send a response!!"});
 });
 
-app.listen(3000,()=>{
-  console.log("Server is on port 3000");
+app.listen(port,()=>{
+  console.log(`Server is on port ${port}`);
 });
